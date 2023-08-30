@@ -11,7 +11,7 @@ using namespace std;
 
 mutex myMutex;
 
-void captureChair(IntQueueHW6 & que, int playerID, struct tm *ptm){
+void captureChair(IntQueue & que, int playerID, struct tm *ptm){
     this_thread::sleep_until(chrono::system_clock::from_time_t(mktime(ptm)));
 
     myMutex.lock();
@@ -37,7 +37,7 @@ int main() {
     cout << "Game Start!" << endl << endl;
 
     // a queue that stores the remaining players id num
-    IntQueueHW6 remainingPlayers(number_of_players);
+    IntQueue remainingPlayers(number_of_players);
     // initialized with nums in the range [0, number_of_players-1]
     // will be updated in the loop with the players in the each new chairQueue
     for (int i = 0; i < number_of_players; i++) {
@@ -50,7 +50,7 @@ int main() {
 
     while(number_of_players != 1) {
         // queue that stores the number of chairs in each rounds (1 less than the player amount in that round)
-        IntQueueHW6 chairQueue(number_of_players - 1);
+        IntQueue chairQueue(number_of_players - 1);
 
         thread players[number_of_players];
         time_t tt = chrono::system_clock::to_time_t(chrono::system_clock::now());
