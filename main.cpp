@@ -6,7 +6,7 @@
 #include <ctime>
 #include <chrono>
 #include <iomanip>
-#include "IntQueueHW6.h"
+#include "IntQueue.h"
 using namespace std;
 
 mutex myMutex;
